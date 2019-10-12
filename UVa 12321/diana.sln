@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "diana", "diana\diana.vcxproj", "{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Debug|x64.ActiveCfg = Debug|x64
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Debug|x64.Build.0 = Debug|x64
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Debug|x86.ActiveCfg = Debug|Win32
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Debug|x86.Build.0 = Debug|Win32
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Release|x64.ActiveCfg = Release|x64
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Release|x64.Build.0 = Release|x64
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Release|x86.ActiveCfg = Release|Win32
+		{EB410A18-C0EE-4610-8EDA-61DCB1E17BA6}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EE19656-D02A-4191-9B04-8A65800822B8}
+	EndGlobalSection
+EndGlobal

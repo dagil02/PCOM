@@ -1,36 +1,27 @@
-﻿// Nombre del alumno .....
-// Usuario del Juez ......
-
 
 #include <iostream>
-//#include <iomanip>
+#include <iomanip>
 #include <fstream>
+#include <map> 
 #include <vector>
-
 
 
 using namespace std;
 
-// función que resuelve el problema
-void resolver(int n, int m) {
-	vector< vector<int> > v = vector< vector<int> >(1000001, vector<int>(0));
 
-	for (int i = 1; i <= n; i++) {
-		int x;
-		cin >> x;
-		v[x].push_back(i);
+struct num {
+
+	int n;
+	vector<int> pos;
+
+	bool operator<(const num & other) const
+	{
+		return n < other.n;
 	}
 
-	for (int i = 0; i < m; i++) {
-		int num, pos;
-		cin >> pos >> num;
-		if (v[num].size() < pos) cout<< 0 <<'\n';
-		else cout << v[num][pos - 1] << '\n';
-	}
-}
+	num(int n) : n(n) {}
+};
 
-// Resuelve un caso de prueba, leyendo de la entrada la
-// configuración, y escribiendo la respuesta
 bool resuelveCaso() {
 	// leer los datos de la entrada
 	int n, m;
@@ -38,7 +29,32 @@ bool resuelveCaso() {
 	if (!std::cin)
 		return false;
 
-	resolver(n,m);
+	map<int, num> nmap;
+	map<int, num>::iterator iter;
+
+	int x;
+
+	for (int i = 1; i <= n; ++i)
+	{
+		cin >> x;
+		if ((iter = nmap.find(x)) == nmap.end())
+			iter = nmap.insert(pair<int, num>(x, num(x))).first;
+
+		iter->second.pos.push_back(i);
+	}
+
+	int p;
+	while (m--)
+	{
+		cin >> p >> x;
+		p--;
+		iter = nmap.find(x);
+
+		if (iter == nmap.end() || iter->second.pos.size() <= p)
+			cout << "0\n";
+		else
+			cout << iter->second.pos[p] << '\n';
+	}
 
 	return true;
 
