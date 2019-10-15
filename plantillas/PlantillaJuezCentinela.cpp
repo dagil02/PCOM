@@ -1,27 +1,17 @@
-// Nombre del alumno .....
-// Usuario del Juez ......
-
 
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
 
 
-// función que resuelve el problema
-TipoSolucion resolver(TipoDatos datos) {
-    
-    
-}
-
-// Resuelve un caso de prueba, leyendo de la entrada la
-// configuración, y escribiendo la respuesta
 bool resuelveCaso() {
     // leer los datos de la entrada
     
-    if (caso especial)
-        return false;
-    
-    TipoSolucion sol = resolver(datos);
+    if (caso especial) return false;
     
     // escribir sol
     
