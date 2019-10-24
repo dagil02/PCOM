@@ -11,24 +11,33 @@ using namespace std;
 using pii = pair<int, int>;
 using arista = pair<float, pair<int, int>>;
 
+void init(int n, vector<int> &C,int &numSets) {
+	C.assign(n, 0); numSets = n;
+	for (int i = 0; i < n; i++) C[i] = i;
+}
 
+int find(int x, vector<int> &C) {
+	return (C[x] == x) ? x : C[x] = find(C[x],C);
+}
+
+void merge(int x, int y, vector<int> &C, int &numSets) {
+	C[find(x, C)] = find(y, C);
+	--numSets;
+}
 float distancia(pii a, pii b) {
 	return sqrt(pow(a.first-b.first,2) + pow(a.second-b.second,2));
 }
 
 void resuelveCaso() {
 	// leer los datos de la entrada
-	vector <bool> bases;
+	vector<int> C;
+	int numSets;
 	vector <arista> aristas;
 	vector<pii> posiciones;
 
 	int sat, post;
 	float max = 0;
 	cin >> sat >> post;
-
-	int rest = post;
-
-	bases.assign(post, false);
 
 	for (int i = 0; i < post; i++) {
 		int x, y;
@@ -41,7 +50,7 @@ void resuelveCaso() {
 	}
 
 	for (int i = 0; i < post; i++) {
-		for (int j = i+1; j < post; j++) {
+		for (int j = i + 1; j < post; j++) {
 			arista x;
 			x.first = distancia(posiciones[i], posiciones[j]);
 			x.second.first = i;
@@ -53,23 +62,15 @@ void resuelveCaso() {
 
 	sort(aristas.begin(), aristas.end());
 
-	int it = 0;
-	while (rest > 0)
-	{
-		if (!bases[aristas[it].second.first] || !bases[aristas[it].second.second]) {
-			if (!bases[aristas[it].second.first]) {
-				bases[aristas[it].second.first] = true;
-				rest--;
-			}
 
-			if (!bases[aristas[it].second.second]) {
-				bases[aristas[it].second.second] = true;
-				rest--;
-			}
-			max = aristas[it].first;
+	init(post, C, numSets);
+
+	for (auto ar : aristas) {
+		if (find(ar.second.first,C) != find(ar.second.second,C)) { 
+			merge(ar.second.first, ar.second.second,C,numSets);
+			max = ar.first;
 		}
-		
-		it++;
+		if (numSets <= sat) break;
 	}
 
 	printf("%.2f\n",max);
