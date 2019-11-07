@@ -18,12 +18,17 @@ class FenwickTree {
         }
     }
 
+    void add (int a,int b, int val){
+        add(a,val);
+        add(b+1,-val);
+    }
+
     int getSum(int a,int b) {
         return getSum(b) - getSum(a - 1);
     }
     
     int getValue(int pos) {
-        return getSum(pos) - getSum(pos - 1);
+        getSum(pos);
     }
     
     void setValue(int pos,int val) {
